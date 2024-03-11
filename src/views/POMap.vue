@@ -1,10 +1,21 @@
 <template>
-    <div class="flex flex-col p-8 relative">
+    <div
+      class="flex flex-col p-8 relative"
+      @touchstart="handleTouchStart"
+      @touchmove="handleTouchMove"
+      @touchend="handleTouchEnd"
+    >
       <h2 class="text-lg font-semibold mb-4">PRINCIPLE ODOR MAP</h2>
       <!-- display only unique smiles strings in their appropriate relative positions -->
       <ul
         class="relative"
-        style="transform: translate(-50%, -50%); position: absolute; top: 50%; left: 50%;"
+        :style="{
+          transform: 'translate(-50%, -50%) scale(' + zoomLevel + ')',
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          width: 'fit-content'
+        }"
       >
         <li
           v-for="(uniqueSmiles, index) in uniqueSmilesList"
@@ -14,11 +25,11 @@
           @mouseout="handleHover(index, false)"
           :style="{
             transform: 'translate(' + scale(uniqueSmiles.odor_x, 'x') + 'px, ' + scale(uniqueSmiles.odor_y, 'y') + 'px)',
-            backgroundColor: getBackgroundColor(index)
+            backgroundColor: index === itemHovered ? hoverColor : ''
           }"
           class="absolute cursor-pointer"
         >
-          {{ uniqueSmiles.smiles }}
+          <span class="smiles-text">{{ uniqueSmiles.smiles }}</span>
         </li>
       </ul>
       <!-- Sidebar -->
@@ -37,7 +48,10 @@
   const sidebarVisible = ref(false); // Define reactive variable to toggle sidebar visibility
   const itemHovered = ref(-1); // Define reactive variable to track the index of the item being hovered over
   const hoverColor = '#72b7e9'; // Define the background color for hover
-  const selectedColor = '#72b7e9'; // Define the background color for selected item
+  const zoomLevel = ref(1); // Define reactive variable for zoom level
+  let touchStartX = 0;
+  let touchStartY = 0;
+  let initialZoomLevel = 1;
   
   // Fetch and process CSV data when component is mounted
   onMounted(async () => {
@@ -65,21 +79,25 @@
     const maxValue = maxValues[dimension];
     
     // Determine the viewport dimensions
-    const viewportWidth = window.innerWidth;
-    const viewportHeight = window.innerHeight;
+    const initialViewportWidth = window.innerWidth;
+    const initialViewportHeight = window.innerHeight;
+    const currentViewportWidth = initialViewportWidth / initialZoomLevel * zoomLevel.value;
+    const currentViewportHeight = initialViewportHeight / initialZoomLevel * zoomLevel.value;
     
     // Calculate the center of the viewport
-    const centerX = viewportWidth / 2;
-    const centerY = viewportHeight / 2;
+    const initialCenterX = initialViewportWidth / 2;
+    const initialCenterY = initialViewportHeight / 2;
+    const currentCenterX = currentViewportWidth / 2;
+    const currentCenterY = currentViewportHeight / 2;
     
     // Scale the value to fit within the page dimensions
-    let scaledValue = (value - minValue) * (viewportWidth / (maxValue - minValue));
+    let scaledValue = (value - minValue) * (currentViewportWidth / (maxValue - minValue));
     
     // Adjust the scaled value to be centered at (0,0)
     if (dimension === 'x') {
-      scaledValue -= centerX;
+      scaledValue -= currentCenterX - initialCenterX;
     } else {
-      scaledValue -= centerY;
+      scaledValue -= currentCenterY - initialCenterY;
     }
     
     return scaledValue;
@@ -101,19 +119,33 @@
     itemHovered.value = isHovered ? index : -1;
   };
   
-  // Function to get the background color based on hover and selection
-  const getBackgroundColor = (index) => {
-    if (sidebarVisible.value && selectedItem.value && index === uniqueSmilesList.value.indexOf(selectedItem.value)) {
-      return selectedColor;
-    } else if (itemHovered.value === index) {
-      return hoverColor;
-    } else {
-      return '';
-    }
+  const handleTouchStart = (event) => {
+    touchStartX = event.touches[0].clientX;
+    touchStartY = event.touches[0].clientY;
+    initialZoomLevel = zoomLevel.value;
   };
+  
+  const handleTouchMove = (event) => {
+    event.preventDefault();
+    const touchEndX = event.touches[0].clientX;
+    const touchEndY = event.touches[0].clientY;
+    const deltaX = touchEndX - touchStartX;
+    const deltaY = touchEndY - touchStartY;
+    const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+    zoomLevel.value = Math.max(1, Math.min(initialZoomLevel + distance * 0.01, 3));
+  };
+  
+  const handleTouchEnd = () => {
+    // Add any final touch-up logic if needed
+  };
+  
   </script>
   
   <style scoped>
+  .smiles-text {
+    font-size: 14px; /* Adjust the font size as needed */
+  }
+  
   ul {
     list-style-type: none;
     padding: 0;
