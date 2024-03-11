@@ -1,6 +1,7 @@
 import {createRouter, createWebHistory} from 'vue-router'
 import Home from '../views/Home.vue'
-import PageOptions from '../views/PageOptions.vue'
+import POMap from '../views/POMap.vue'
+import StructMap from '../views/StructMap.vue'
 
 const routes = [
     {
@@ -10,9 +11,15 @@ const routes = [
     },
 
     {
-        path: '/map/:page',
-        name: 'selectPage', 
-        component: PageOptions
+        path: '/explore/:page',
+        name: 'POMap', 
+        component: POMap
+    },
+    
+    {
+        path: '/explore/:page',
+        name: 'StructMap', 
+        component: StructMap
     }
 ];
 
