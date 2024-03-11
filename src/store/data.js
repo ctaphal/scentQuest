@@ -1,4 +1,7 @@
 // Function to read and process CSV data
+import Papa from 'papaparse';
+
+// Function to read and process CSV data
 export async function processCsvData() {
   try {
     // Read CSV file (example using fetch for client-side)
@@ -8,11 +11,8 @@ export async function processCsvData() {
     }
     const csvString = await response.text();
     
-    // Process CSV string into array of objects
-    const csvData = csvString.split('\n').map(line => {
-      const [smiles, principal_name, primary_descriptor, second_descriptor, third_descriptor, cas, odor_x, odor_y, structure_x, structure_y] = line.split(',');
-      return { smiles, principal_name, primary_descriptor, second_descriptor, third_descriptor, cas, odor_x, odor_y, structure_x, structure_y };
-    });
+    // Parse CSV string into array of objects using PapaParse
+    const { data: csvData } = Papa.parse(csvString, { header: true });
 
     return csvData;
   } catch (error) {

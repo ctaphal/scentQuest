@@ -2,11 +2,22 @@
     <div class="flex flex-col p-8 relative">
       <h2 class="text-lg font-semibold mb-4">PRINCIPLE ODOR MAP</h2>
       <!-- display only unique smiles strings in their appropriate relative positions -->
-      <ul class="relative" style="transform: translate(-50%, -50%); position: absolute; top: 50%; left: 50%;">
-        <li v-for="(uniqueSmiles, index) in uniqueSmilesList" :key="index"
-            @click="showSidebar(uniqueSmiles)"
-            :style="{ transform: 'translate(' + scale(uniqueSmiles.odor_x, 'x') + 'px, ' + scale(uniqueSmiles.odor_y, 'y') + 'px)' }"
-            class="absolute cursor-pointer">
+      <ul
+        class="relative"
+        style="transform: translate(-50%, -50%); position: absolute; top: 50%; left: 50%;"
+      >
+        <li
+          v-for="(uniqueSmiles, index) in uniqueSmilesList"
+          :key="index"
+          @click="showSidebar(uniqueSmiles)"
+          @mouseover="handleHover(index, true)"
+          @mouseout="handleHover(index, false)"
+          :style="{
+            transform: 'translate(' + scale(uniqueSmiles.odor_x, 'x') + 'px, ' + scale(uniqueSmiles.odor_y, 'y') + 'px)',
+            backgroundColor: getBackgroundColor(index)
+          }"
+          class="absolute cursor-pointer"
+        >
           {{ uniqueSmiles.smiles }}
         </li>
       </ul>
@@ -24,6 +35,9 @@
   const uniqueSmilesList = ref([]); // Define reactive variable to hold unique smiles
   const selectedItem = ref(null); // Define reactive variable to hold selected item
   const sidebarVisible = ref(false); // Define reactive variable to toggle sidebar visibility
+  const itemHovered = ref(-1); // Define reactive variable to track the index of the item being hovered over
+  const hoverColor = '#72b7e9'; // Define the background color for hover
+  const selectedColor = '#72b7e9'; // Define the background color for selected item
   
   // Fetch and process CSV data when component is mounted
   onMounted(async () => {
@@ -41,10 +55,7 @@
     });
   }
   
-  // Function to scale the coordinates
-    // Function to scale the coordinates
-    // Function to scale the coordinates
-const scale = (value, dimension) => {
+  const scale = (value, dimension) => {
     // Define min and max values for each dimension
     const minValues = { x: -3.6, y: -4.4 }; // Example minimum values
     const maxValues = { x: 14, y: 10.3 }; // Example maximum values
@@ -66,14 +77,13 @@ const scale = (value, dimension) => {
     
     // Adjust the scaled value to be centered at (0,0)
     if (dimension === 'x') {
-        scaledValue -= centerX;
+      scaledValue -= centerX;
     } else {
-        scaledValue -= centerY;
+      scaledValue -= centerY;
     }
     
     return scaledValue;
-};
-
+  };
   
   // Function to show sidebar and set selected item
   const showSidebar = (item) => {
@@ -84,6 +94,22 @@ const scale = (value, dimension) => {
   // Function to close sidebar
   const closeSidebar = () => {
     sidebarVisible.value = false;
+  };
+  
+  // Function to handle mouseover and mouseout events
+  const handleHover = (index, isHovered) => {
+    itemHovered.value = isHovered ? index : -1;
+  };
+  
+  // Function to get the background color based on hover and selection
+  const getBackgroundColor = (index) => {
+    if (sidebarVisible.value && selectedItem.value && index === uniqueSmilesList.value.indexOf(selectedItem.value)) {
+      return selectedColor;
+    } else if (itemHovered.value === index) {
+      return hoverColor;
+    } else {
+      return '';
+    }
   };
   </script>
   
