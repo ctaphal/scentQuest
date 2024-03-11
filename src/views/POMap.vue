@@ -22,20 +22,23 @@
         width: 'fit-content'
       }"
     >
-      <li
-        v-for="(uniqueSmiles, index) in uniqueSmilesList"
-        :key="index"
-        @click="showSidebar(uniqueSmiles)"
-        @mouseover="handleHover(index, true)"
-        @mouseout="handleHover(index, false)"
-        :style="{
-          transform: 'translate(' + scale(uniqueSmiles.odor_x, 'x') + 'px, ' + scale(uniqueSmiles.odor_y, 'y') + 'px)',
-          backgroundColor: index === itemHovered ? hoverColor : ''
-        }"
-        class="absolute cursor-pointer"
-      >
-        <span class="smiles-text">{{ uniqueSmiles.smiles }}</span>
-      </li>
+    <li
+    v-for="(uniqueSmiles, index) in uniqueSmilesList"
+    :key="index"
+    @click="showSidebar(uniqueSmiles)"
+    @mouseover="handleHover(index, true)"
+    @mouseout="handleHover(index, false)"
+    :style="{
+      transform: 'translate(' + scale(uniqueSmiles.odor_x, 'x') + 'px, ' + scale(uniqueSmiles.odor_y, 'y') + 'px)',
+      backgroundColor: index === itemHovered ? hoverColor : '',
+      backgroundImage: uniqueSmiles.Image_Path ? 'url(../' + uniqueSmiles.Image_Path + ')' : '' // Prefix with ../
+    }"
+    class="absolute cursor-pointer"
+>
+    <!-- No need to display the SMILES text -->
+    <!-- <span class="smiles-text">{{ uniqueSmiles.smiles }}</span> -->
+  </li>
+
     </ul>
     <!-- Sidebar -->
     <Sidebar v-if="sidebarVisible" :item="selectedItem" @closeSidebar="closeSidebar" />
