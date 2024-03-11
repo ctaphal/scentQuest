@@ -1,9 +1,10 @@
 <template>
     <div class="flex flex-col p-8">
         <h2 class="text-lg font-semibold mb-4">STRUCTURAL MAP</h2>
+        <!-- display only unique smiles strings in their appropriate relative positions -->
         <ul class="relative" style="transform: translate(-50%, -50%); position: absolute; top: 50%; left: 50%;">
-            <li v-for="(item, index) in csvData" :key="index" :style="{ transform: 'translate(' + scale(item.structure_x, 'x') + 'px, ' + scale(item.structure_y, 'y') + 'px)' }" class="absolute">
-                {{ item.smiles }}
+            <li v-for="(uniqueSmiles, index) in uniqueSmilesList" :key="index" :style="{ transform: 'translate(' + scale(uniqueSmiles.structure_x, 'x') + 'px, ' + scale(uniqueSmiles.structure_y, 'y') + 'px)' }" class="absolute">
+                {{ uniqueSmiles.smiles }}
             </li>
         </ul>
     </div>
@@ -14,11 +15,23 @@
     import { ref, onMounted } from 'vue';
 
     const csvData = ref(null); // Define reactive variable to hold CSV data
+    const uniqueSmilesList = ref([]); // Define reactive variable to hold unique smiles
 
     // Fetch and process CSV data when component is mounted
     onMounted(async () => {
         csvData.value = await processCsvData();
+        extractUniqueSmiles();
     });
+
+    function extractUniqueSmiles() {
+        const uniqueSmilesSet = new Set();
+        csvData.value.forEach(item => {
+            uniqueSmilesSet.add(item.smiles);
+        });
+        uniqueSmilesList.value = Array.from(uniqueSmilesSet).map(smiles => {
+            return csvData.value.find(item => item.smiles === smiles);
+        });
+    }
 
     // Function to scale the coordinates
     const scale = (value, dimension) => {
