@@ -5,8 +5,13 @@
     @touchmove="handleTouchMove"
     @touchend="handleTouchEnd"
   >
-    <h2 class="text-lg font-semibold mb-4">STRUCTURAL MAP</h2>
-    <!-- display only unique smiles strings in their appropriate relative positions -->
+  <h2 class="text-2xl font-semibold mb-4">
+  <span class="rounded inline bg-blue-300 px-3">ScentQUEST: STRUCTURAL MAP</span>
+  </h2>
+  <button @click="navigateToPOMap" class="flex justify-start mb-4">
+  <span class="inline bg-gray-200 px-3 rounded text-lg italic text-gray-500">Go to Principle Odor Map</span>
+  </button>
+  <!-- display only unique smiles strings in their appropriate relative positions -->
     <ul
       class="relative"
       :style="{
@@ -41,6 +46,9 @@
 import { processCsvData } from '../store/data'; // Import CSV processing function
 import { ref, onMounted } from 'vue';
 import Sidebar from '../components/Sidebar.vue'; // Import Sidebar component
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
 
 const csvData = ref(null); // Define reactive variable to hold CSV data
 const uniqueSmilesList = ref([]); // Define reactive variable to hold unique smiles
@@ -139,6 +147,9 @@ const handleTouchEnd = () => {
   // Add any final touch-up logic if needed
 };
 
+const navigateToPOMap = () => {
+  router.push({ name: 'POMap' });
+};
 </script>
 
 <style scoped>
