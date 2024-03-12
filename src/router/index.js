@@ -11,13 +11,13 @@ const routes = [
     },
 
     {
-        path: '/scentQuest/explore/:page',
+        path: '/scentQuest/:page',
         name: 'POMap', 
         component: POMap
     },
     
     {
-        path: '/scentQuest/explore/:page',
+        path: '/scentQuest/:page',
         name: 'StructMap', 
         component: StructMap
     }

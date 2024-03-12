@@ -5,7 +5,7 @@ import Papa from 'papaparse';
 export async function processCsvData() {
   try {
     // Read CSV file (example using fetch for client-side)
-    const response = await fetch('/odorMolecules.csv');
+    const response = await fetch('/scentQuest/odorMolecules.csv');
     if (!response.ok) {
       throw new Error('Failed to fetch CSV data');
     }
