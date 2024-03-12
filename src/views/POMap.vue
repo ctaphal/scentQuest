@@ -36,9 +36,9 @@
     }"
     class="absolute cursor-pointer"
   >
-  <button style="width: 100px; height: 100px; border: 2px solid #13760a;">
-    <img :src="getImgSrc(uniqueSmiles.Image_Path)">
-</button>
+  <button v-if="getImgSrc(uniqueSmiles.Image_Path)" style="width: 100px; height: 100px; border: 2px solid #13760a;">
+    <img :src="getImgSrc(uniqueSmiles.Image_Path)" alt="Unidentified Point (only one)">
+  </button>
 
   </li>
 </ul>
@@ -62,8 +62,9 @@ const uniqueSmilesList = ref([]); // Define reactive variable to hold unique smi
 const selectedItem = ref(null); // Define reactive variable to hold selected item
 const sidebarVisible = ref(false); // Define reactive variable to toggle sidebar visibility
 const itemHovered = ref(-1); // Define reactive variable to track the index of the item being hovered over
-const hoverColor = '#72b7e9'; // Define the background color for hover
-const selectedColor = '#72b7e9'; // Define the background color for selected item
+const hoverColor = '#1434A4'; // Define the background color for hover
+const selectedColor = '#1434A4'; // Define the background color for selected item
+const tileBgColor = '#93C572';
 const zoomLevel = ref(1); // Define reactive variable for zoom level
 let touchStartX = 0;
 let touchStartY = 0;
@@ -144,7 +145,7 @@ const getBackgroundColor = (index) => {
     } else if (itemHovered.value === index) {
       return hoverColor;
     } else {
-      return '';
+      return tileBgColor;
     }
   };
 

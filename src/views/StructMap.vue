@@ -22,25 +22,26 @@
     width: 'fit-content'
   }"
 >
-  <li
-    v-for="(uniqueSmiles, index) in uniqueSmilesList"
-    :key="index"
-    @click="showSidebar(uniqueSmiles)"
-    @mouseover="handleHover(index, true)"
-    @mouseout="handleHover(index, false)"
-    :style="{
-      transform: 'translate(' + (scale(uniqueSmiles.structure_x, 'x')+400) + 'px, ' + (scale(uniqueSmiles.structure_y, 'y')+200) + 'px)',
-      backgroundColor: getBackgroundColor(index),
-      visibility: 'visible', 
-      opacity: 1
-    }"
-    class="absolute cursor-pointer"
-  >
-  <button style="width: 100px; height: 100px; border: 2px solid #13760a;">
-    <img :src="getImgSrc(uniqueSmiles.Image_Path)">
-</button>
+<li
+  v-for="(uniqueSmiles, index) in uniqueSmilesList"
+  :key="index"
+  @click="showSidebar(uniqueSmiles)"
+  @mouseover="handleHover(index, true)"
+  @mouseout="handleHover(index, false)"
+  :style="{
+    transform: 'translate(' + (scale(uniqueSmiles.structure_x, 'x')+400) + 'px, ' + (scale(uniqueSmiles.structure_y, 'y')+200) + 'px)',
+    backgroundColor: getBackgroundColor(index),
+    visibility: 'visible', 
+    opacity: 1
+  }"
+  class="absolute cursor-pointer"
+>
+  <button v-if="getImgSrc(uniqueSmiles.Image_Path)" style="width: 100px; height: 100px; border: 2px solid #13760a;">
+    <img :src="getImgSrc(uniqueSmiles.Image_Path)" alt="Unidentified Point (only one)">
+  </button>
+  
+</li>
 
-  </li>
 </ul>
 
 
@@ -62,9 +63,9 @@ const uniqueSmilesList = ref([]); // Define reactive variable to hold unique smi
 const selectedItem = ref(null); // Define reactive variable to hold selected item
 const sidebarVisible = ref(false); // Define reactive variable to toggle sidebar visibility
 const itemHovered = ref(-1); // Define reactive variable to track the index of the item being hovered over
-const hoverColor = '#72b7e9'; // Define the background color for hover
-const selectedColor = '#72b7e9'; // Define the background color for selected item
-const tileBgColor = '#2E8B57';
+const hoverColor = '#1434A4'; // Define the background color for hover
+const selectedColor = '#1434A4'; // Define the background color for selected item
+const tileBgColor = '#93C572';
 const zoomLevel = ref(1); // Define reactive variable for zoom level
 let touchStartX = 0;
 let touchStartY = 0;

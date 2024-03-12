@@ -1,12 +1,15 @@
 <template>
   <div class="sidebar">
-    <div class="sidebar-content">
-      <p>NAME: {{ item.principal_name }}</p>
+    <div class="sidebar-content" style="color: white;">
+      <p><strong>NAME:</strong> {{ item.principal_name }}</p>
       <p>--------------------------------</p>
-      <p>SCENT COMPOSITION: </p>
-      <p>Primary: {{ item.primary_descriptor }}</p>
-      <p>Second: {{ item.second_descriptor }}</p>
-      <p>Third: {{ item.third_descriptor }}</p>
+      <p><strong>SCENT COMPOSITION: </strong></p>
+      <p><strong>Primary: </strong>{{ item.primary_descriptor }}</p>
+      <p><strong>Secondary: </strong>{{ item.second_descriptor }}</p>
+      <p><strong>Tertiary: </strong>{{ item.third_descriptor }}</p>
+      <p>--------------------------------</p>
+      <p><strong>MOLECULAR STRUCTURE: </strong></p>
+      <p> </p>
       <!-- Display the image -->
       <img :src="getImgSrc(item.Image_Path)" alt="Molecular Structure Image">
     </div>
@@ -1804,7 +1807,7 @@ import img1751 from '../imgs/molecule_1751.png';
   right: 0;
   height: 100vh;
   width: 300px;
-  background-color: #72b7e9;
+  background-color: #1434A4;
   box-shadow: -2px 0 6px rgba(0, 0, 0, 0.1);
   padding: 20px;
 }
