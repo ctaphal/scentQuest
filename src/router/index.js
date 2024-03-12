@@ -5,19 +5,19 @@ import StructMap from '../views/StructMap.vue'
 
 const routes = [
     {
-        path: '/',
+        path: '/scentQuest/',
         name: 'home', 
         component: Home
     },
 
     {
-        path: '/explore/:page',
+        path: '/scentQuest/explore/:page',
         name: 'POMap', 
         component: POMap
     },
     
     {
-        path: '/explore/:page',
+        path: '/scentQuest/explore/:page',
         name: 'StructMap', 
         component: StructMap
     }
