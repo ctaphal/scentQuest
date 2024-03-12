@@ -1,4 +1,50 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
+/* Apply base styles to the sidebar */
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 300px;
+    background-color: #72b7e9;
+    box-shadow: -2px 0 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+  }
+  
+  /* Style the content within the sidebar */
+  .sidebar-content {
+    margin-bottom: 20px;
+  }
+  
+  /* Style the close button */
+  .close-button {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    background-color: #ffffff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  /* Style the image within the sidebar */
+  .sidebar-content img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .absolute.cursor-pointer {
+    /* Add necessary positioning styles */
+    position: absolute;
+    top: 0;
+    left: 0;
+  
+    /* Specify background image properties */
+    background-size: cover; /* Adjust as needed */
+    background-repeat: no-repeat;
+    background-position: center; /* Adjust as needed */
+  }

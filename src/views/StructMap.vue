@@ -30,7 +30,9 @@
         @mouseout="handleHover(index, false)"
         :style="{
           transform: 'translate(' + scale(uniqueSmiles.structure_x, 'x') + 'px, ' + scale(uniqueSmiles.structure_y, 'y') + 'px)',
-          backgroundColor: index === itemHovered ? hoverColor : ''
+          backgroundColor: index === itemHovered ? hoverColor : '',
+          visibility: 'visible', 
+          opacity: 1
         }"
         class="absolute cursor-pointer"
       >
