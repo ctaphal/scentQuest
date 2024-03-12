@@ -30,7 +30,7 @@
     @mouseout="handleHover(index, false)"
     :style="{
       transform: 'translate(' + scale(uniqueSmiles.structure_x, 'x') + 'px, ' + scale(uniqueSmiles.structure_y, 'y') + 'px)',
-      backgroundColor: index === itemHovered ? hoverColor : '',
+      backgroundColor: getBackgroundColor(index),
       visibility: 'visible', 
       opacity: 1
     }"
@@ -63,6 +63,7 @@ const selectedItem = ref(null); // Define reactive variable to hold selected ite
 const sidebarVisible = ref(false); // Define reactive variable to toggle sidebar visibility
 const itemHovered = ref(-1); // Define reactive variable to track the index of the item being hovered over
 const hoverColor = '#72b7e9'; // Define the background color for hover
+const selectedColor = '#72b7e9'; // Define the background color for selected item
 const zoomLevel = ref(1); // Define reactive variable for zoom level
 let touchStartX = 0;
 let touchStartY = 0;
@@ -133,6 +134,16 @@ const closeSidebar = () => {
 const handleHover = (index, isHovered) => {
   itemHovered.value = isHovered ? index : -1;
 };
+
+const getBackgroundColor = (index) => {
+    if (sidebarVisible.value && selectedItem.value && index === uniqueSmilesList.value.indexOf(selectedItem.value)) {
+      return selectedColor;
+    } else if (itemHovered.value === index) {
+      return hoverColor;
+    } else {
+      return '';
+    }
+  };
 
 const handleTouchStart = (event) => {
   touchStartX = event.touches[0].clientX;
