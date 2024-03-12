@@ -14,9 +14,9 @@
     <router-link :to="{ name: 'home', params: { page: page }}" class="text-lg mt-2">
       <span class="inline bg-gray-200 px-4 py-2 rounded text-lg italic text-gray-700">Go to Home</span>
     </router-link>
-    <button @click="navigateToPOMap" class="text-lg ml-2 mt-2">
+    <router-link :to="{ name: 'POMap', params: { page: page }}" class="text-lg ml-2 mt-2">
       <span class="inline bg-gray-200 px-4 py-2 rounded text-lg italic text-gray-700">Go to Principal Odor Map</span>
-    </button>
+    </router-link>
   </div>
   <h2 class="text-2xl mt-4 text-black italic ml-2">
     Scroll to explore the map!
