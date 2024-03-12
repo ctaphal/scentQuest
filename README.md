@@ -2,6 +2,7 @@
 Site to explore the molecules in the Principle Odor Map and Structure Map in an interactive, visual way!
 
 Explore at this link: https://ctaphal.github.io/scentQuest/
+*NOTE: refreshing the page is currently not supported. Please return to this original link above if you refresh and receive an error message.*
 
 ## Functionality
 ### Zoom-in on map areas to explore the structures of molecules in that part of the map:
