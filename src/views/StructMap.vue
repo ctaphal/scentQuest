@@ -5,12 +5,22 @@
     @touchmove="handleTouchMove"
     @touchend="handleTouchEnd"
   >
-  <h2 class="text-2xl font-semibold mb-4">
-  <span class="rounded inline bg-blue-300 px-3">ScentQUEST: STRUCTURAL MAP OF FRAGRANCES</span>
-  </h2>
-  <button @click="navigateToPOMap" class="flex justify-start mb-4">
-  <span class="inline bg-gray-200 px-3 rounded text-lg italic text-gray-500">Go to Principle Odor Map</span>
-  </button>
+    <h2 class="text-4xl font-semibold mb-4">
+      <span class="rounded inline bg-blue-300 px-3">
+        STRUCTURAL MAP OF FRAGRANCE
+      </span>
+    </h2>
+    <div class="flex">
+      <router-link :to="{ name: 'home', params: { page: page }}" class="text-sm">
+        <span class="inline bg-gray-200 px-3 rounded text-lg italic text-gray-500">Go to Home</span>
+      </router-link>
+      <button @click="navigateToPOMap" class="text-sm ml-2">
+        <span class="inline bg-gray-200 px-3 rounded text-lg italic text-gray-500">Go to Principal Odor Map</span>
+      </button>
+    </div>
+    <h2 class="text-4xl mt-4 text-black italic ml-1">
+      Scroll to explore the map!
+    </h2>
   <!-- display only unique smiles strings in their appropriate relative positions -->
   <ul
   class="relative"
