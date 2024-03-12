@@ -29,7 +29,7 @@
     @mouseover="handleHover(index, true)"
     @mouseout="handleHover(index, false)"
     :style="{
-      transform: 'translate(' + (scale(uniqueSmiles.structure_x, 'x')+400) + 'px, ' + scale(uniqueSmiles.structure_y, 'y') + 'px)',
+      transform: 'translate(' + (scale(uniqueSmiles.structure_x, 'x')+400) + 'px, ' + (scale(uniqueSmiles.structure_y, 'y')+200) + 'px)',
       backgroundColor: getBackgroundColor(index),
       visibility: 'visible', 
       opacity: 1
