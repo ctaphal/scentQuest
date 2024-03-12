@@ -29,7 +29,7 @@
     @mouseover="handleHover(index, true)"
     @mouseout="handleHover(index, false)"
     :style="{
-      transform: 'translate(' + scale(uniqueSmiles.structure_x, 'x') + 'px, ' + scale(uniqueSmiles.structure_y, 'y') + 'px)',
+      transform: 'translate(' + (scale(uniqueSmiles.structure_x, 'x')-500) + 'px, ' + scale(uniqueSmiles.structure_y, 'y') + 'px)',
       backgroundColor: getBackgroundColor(index),
       visibility: 'visible', 
       opacity: 1
@@ -37,7 +37,7 @@
     class="absolute cursor-pointer"
   >
   <button style="width: 30px; height: 30px;">
-    <img :src="getImgSrc(uniqueSmiles.Image_Path)" alt="Molecular Structure Image">
+    <img :src="getImgSrc(uniqueSmiles.Image_Path)">
 </button>
 
   </li>
