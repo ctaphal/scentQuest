@@ -8,7 +8,7 @@ Site to explore the molecules in the Principle Odor Map and Structure Map in an 
 ## Functionality
 ### Zoom-in on map areas to explore the structures of molecules in that part of the map:
 
-![image](https://github.com/ctaphal/scentQuest/assets/67525176/8a56148c-b1b5-40e5-bf5d-9ac990d05eac)
+![POM](https://github.com/ctaphal/scentQuest/assets/67525176/05436443-1f51-43b2-af71-33a97baefa07)
 
 &nbsp;&nbsp;
 
@@ -16,10 +16,11 @@ Site to explore the molecules in the Principle Odor Map and Structure Map in an 
 
 *NOTE: sidebar will not be visible if zoomed in; zoom out again to see the sidebar for the molecule you selected*
 
-![image](https://github.com/ctaphal/scentQuest/assets/67525176/dc5fd204-9f92-4a45-824e-8c01babfcf87)
+<img width="1265" alt="demo" src="https://github.com/ctaphal/scentQuest/assets/67525176/77300d52-cc36-454a-8990-00656f72bed6">
 
 &nbsp;&nbsp;
 
-### Switch between maps at the top-left of each map's page: 
+### Switch between maps or return to the home page at the top-left of each map's page: 
 
-![image](https://github.com/ctaphal/scentQuest/assets/67525176/bb90f01e-e7de-48d6-9b82-48a453d14b22)
+![image](https://github.com/ctaphal/scentQuest/assets/67525176/eab893d2-6dfb-46d9-93ab-8bab000bdfa6)
+
