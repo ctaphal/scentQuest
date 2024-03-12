@@ -64,6 +64,7 @@ const sidebarVisible = ref(false); // Define reactive variable to toggle sidebar
 const itemHovered = ref(-1); // Define reactive variable to track the index of the item being hovered over
 const hoverColor = '#72b7e9'; // Define the background color for hover
 const selectedColor = '#72b7e9'; // Define the background color for selected item
+const tileBgColor = '#2E8B57';
 const zoomLevel = ref(1); // Define reactive variable for zoom level
 let touchStartX = 0;
 let touchStartY = 0;
@@ -144,7 +145,7 @@ const getBackgroundColor = (index) => {
     } else if (itemHovered.value === index) {
       return hoverColor;
     } else {
-      return '';
+      return tileBgColor;
     }
   };
 
