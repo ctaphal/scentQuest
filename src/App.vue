@@ -1,6 +1,9 @@
 
 <template>
-  <router-view />
+  <div>
+    <router-link :to="{name: 'home'}">
+    </router-link>
+  </div>
 </template>
 
 <script setup>
