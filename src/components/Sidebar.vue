@@ -1,8 +1,6 @@
 <template>
   <div class="sidebar">
     <div class="sidebar-content">
-      <h3>{{ item.smiles }}</h3>
-      <p>--------------------------------</p>
       <p>NAME: {{ item.principal_name }}</p>
       <p>--------------------------------</p>
       <p>SCENT COMPOSITION: </p>
