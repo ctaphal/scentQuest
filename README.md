@@ -10,6 +10,6 @@ Click on a molecule (in either map) to see the molecule's name and top 3 scent d
 
 ![image](https://github.com/ctaphal/scentQuest/assets/67525176/dc5fd204-9f92-4a45-824e-8c01babfcf87)
 
-Switch between maps: 
+Switch between maps at the top-left of each map's page: 
 
 ![image](https://github.com/ctaphal/scentQuest/assets/67525176/b012363e-f4a6-42be-8b0f-b698382e56b8)
