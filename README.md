@@ -4,6 +4,7 @@ Site to explore the molecules in the Principle Odor Map and Structure Map in an 
 **Explore at this link: https://ctaphal.github.io/scentQuest/**
 
 &nbsp;
+
 RELEASE NOTES:
 - refreshing the page is currently not supported (please return to the original link above if you refresh and receive an error message)
 - on each map, there is a stray element (a tiny, green box near the map name) whose source is TBD, but will be removed in future updates
