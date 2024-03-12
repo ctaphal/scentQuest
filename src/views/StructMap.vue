@@ -29,14 +29,14 @@
     @mouseover="handleHover(index, true)"
     @mouseout="handleHover(index, false)"
     :style="{
-      transform: 'translate(' + (scale(uniqueSmiles.structure_x, 'x')-500) + 'px, ' + scale(uniqueSmiles.structure_y, 'y') + 'px)',
+      transform: 'translate(' + (scale(uniqueSmiles.structure_x, 'x')+400) + 'px, ' + scale(uniqueSmiles.structure_y, 'y') + 'px)',
       backgroundColor: getBackgroundColor(index),
       visibility: 'visible', 
       opacity: 1
     }"
     class="absolute cursor-pointer"
   >
-  <button style="width: 30px; height: 30px;">
+  <button style="width: 100px; height: 100px; border: 2px solid #13760a;">
     <img :src="getImgSrc(uniqueSmiles.Image_Path)">
 </button>
 
@@ -87,8 +87,8 @@ function extractUniqueSmiles() {
 
 const scale = (value, dimension) => {
   // Define min and max values for each dimension
-  const minValues = { x: -6.5, y: -6 }; // Example minimum values
-  const maxValues = { x: 14, y: 14.9 }; // Example maximum values
+  const minValues = { x: -3.6, y: -4.4 }; // Example minimum values
+  const maxValues = { x: 14, y: 10.3 }; // Example maximum values
 
   // Determine the appropriate min and max values based on the dimension
   const minValue = minValues[dimension];
@@ -106,8 +106,11 @@ const scale = (value, dimension) => {
   const currentCenterX = currentViewportWidth / 2;
   const currentCenterY = currentViewportHeight / 2;
 
+  // Increase the scaling factor to spread apart molecules more
+  const scalingFactor = 5; // Adjust this value to increase or decrease the spreading
+
   // Scale the value to fit within the page dimensions
-  let scaledValue = (value - minValue) * (currentViewportWidth / (maxValue - minValue));
+  let scaledValue = (value - minValue) * (currentViewportWidth / (maxValue - minValue)) * scalingFactor;
 
   // Adjust the scaled value to be centered at (0,0)
   if (dimension === 'x') {

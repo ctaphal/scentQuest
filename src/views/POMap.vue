@@ -36,7 +36,7 @@
     }"
     class="absolute cursor-pointer"
   >
-  <button style="width: 30px; height: 30px;">
+  <button style="width: 100px; height: 100px; border: 2px solid #13760a;">
     <img :src="getImgSrc(uniqueSmiles.Image_Path)">
 </button>
 
@@ -106,8 +106,11 @@ const scale = (value, dimension) => {
   const currentCenterX = currentViewportWidth / 2;
   const currentCenterY = currentViewportHeight / 2;
 
+  // Increase the scaling factor to spread apart molecules more
+  const scalingFactor = 5; // Adjust this value to increase or decrease the spreading
+
   // Scale the value to fit within the page dimensions
-  let scaledValue = (value - minValue) * (currentViewportWidth / (maxValue - minValue));
+  let scaledValue = (value - minValue) * (currentViewportWidth / (maxValue - minValue)) * scalingFactor;
 
   // Adjust the scaled value to be centered at (0,0)
   if (dimension === 'x') {
