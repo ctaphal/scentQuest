@@ -3,7 +3,7 @@
     <div class="sidebar-content" style="color: white;">
       <p><strong>NAME:</strong> {{ item.principal_name }}</p>
       <p>--------------------------------</p>
-      <p><strong>SCENT COMPOSITION: </strong></p>
+      <p><strong>ODOR DESCRIPTORS: </strong></p>
       <p><strong>Primary: </strong>{{ item.primary_descriptor }}</p>
       <p><strong>Secondary: </strong>{{ item.second_descriptor }}</p>
       <p><strong>Tertiary: </strong>{{ item.third_descriptor }}</p>
