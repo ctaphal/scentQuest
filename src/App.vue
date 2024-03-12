@@ -3,6 +3,9 @@
   <div>
     <router-link :to="{name: 'home'}">
     </router-link>
+    <main>
+      <router-view/>
+    </main>
   </div>
 </template>
 
