@@ -1,5 +1,5 @@
 # ScentQUEST
-Site to explore the molecules in the Principal Odor Map and Structure Map in an interactive, visual way!
+Site to explore the molecules in the Principal Odor Map (POM) and Structure Map in an interactive, visual way!
 
 **Explore at this link: https://ctaphal.github.io/scentQuest/**
 
