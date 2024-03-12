@@ -6,7 +6,7 @@
     @touchend="handleTouchEnd"
   >
   <h2 class="text-2xl font-semibold mb-4">
-  <span class="rounded inline bg-blue-300 px-3">ScentQUEST: PRINCIPLE ODOR MAP</span>
+  <span class="rounded inline bg-blue-300 px-3">ScentQUEST: PRINCIPAL ODOR MAP</span>
   </h2>
   <button @click="navigateToStructMap" class="flex justify-start mb-4">
   <span class="inline bg-gray-200 px-3 rounded text-lg italic text-gray-500">Go to Structural Map</span>

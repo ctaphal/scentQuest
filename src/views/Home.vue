@@ -26,6 +26,6 @@
 <script setup>
 
 //define the 2 pages of the site:
-const pages = ['Principle Odor Map', 'Structural Map'];
+const pages = ['Principal Odor Map', 'Structural Map'];
 
 </script>
