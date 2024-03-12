@@ -1,7 +1,19 @@
-# Vue 3 + Vite
+# ScentQUEST
+Site to explore the molecules in the Principle Odor Map and Structure Map in an interactive, visual way!
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+# Functionality
+Zoom-in on map areas to explore the structures of molecules in that part of the map:
 
-## Recommended IDE Setup
+![image](https://github.com/ctaphal/scentQuest/assets/67525176/8a56148c-b1b5-40e5-bf5d-9ac990d05eac)
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+&nbsp;
+
+Click on a molecule (in either map) to see the molecule's name and top 3 scent descriptors:
+
+![image](https://github.com/ctaphal/scentQuest/assets/67525176/dc5fd204-9f92-4a45-824e-8c01babfcf87)
+
+&nbsp;
+
+Switch between maps at the top-left of each map's page: 
+
+![image](https://github.com/ctaphal/scentQuest/assets/67525176/bb90f01e-e7de-48d6-9b82-48a453d14b22)
