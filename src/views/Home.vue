@@ -8,7 +8,7 @@
           <router-link
             v-if="index === 0"
             :key="page"
-            :to="{ name: 'POMap', params: { page: page }}"
+            :to="{ name: 'POMap', params: { page: 'Principal Odor Map' }}"
             class="rounded p-2 bg-blue-300 hover:bg-blue-400 hover:shadow-md transition duration-100"
           >
             {{ page }}
@@ -16,7 +16,7 @@
           <router-link
             v-else
             :key="StructMap"
-            :to="{ name: 'StructMap', params: { page: page }}"
+            :to="{ name: 'StructMap', params: { page: 'Structural Map' }}"
             class="rounded p-2 bg-blue-300 hover:bg-blue-400 hover:shadow-md transition duration-100"
           >
             {{ page }}
